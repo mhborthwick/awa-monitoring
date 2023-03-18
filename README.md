@@ -4,9 +4,9 @@
 
 ## Checklist
 
-- [ ] Add handlers
+- [x] Add handlers
 
-  - [ ] Zendesk - http
+  - [x] Zendesk - http
 
   - [ ] Klaviyo - scraper
 
