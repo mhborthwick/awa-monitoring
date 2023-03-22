@@ -2,7 +2,7 @@
 
 > 🚨 This project is currently in development
 
-# Set up
+## Setup
 
 - Create `.env` file
 
