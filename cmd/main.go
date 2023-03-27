@@ -1,12 +1,6 @@
 package main
 
-import (
-	"log"
-	"os"
-
-	"github.com/joho/godotenv"
-	"github.com/mhborthwick/awa-monitoring-v2/pkg/db"
-)
+import "github.com/mhborthwick/awa-monitoring-v2/pkg/adding/klaviyo"
 
 // TODO: Move to rest package
 type ZendeskIncidents struct {
@@ -15,16 +9,20 @@ type ZendeskIncidents struct {
 }
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	token := os.Getenv("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN")
-	port := os.Getenv("DOCKER_INFLUXDB_INIT_PORT")
-	url := "http://localhost:" + port
-	client := db.NewInfluxDBClient(url, token)
-	defer client.Close()
+	klaviyo.WriteDataPoint()
 }
+
+// func main() {
+// 	err := godotenv.Load()
+// 	if err != nil {
+// 		log.Fatal("Error loading .env file")
+// 	}
+// 	token := os.Getenv("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN")
+// 	port := os.Getenv("DOCKER_INFLUXDB_INIT_PORT")
+// 	url := "http://localhost:" + port
+// 	client := db.NewInfluxDBClient(url, token)
+// 	defer client.Close()
+// }
 
 // func main() {
 // 	colly.ScrapeData(
