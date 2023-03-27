@@ -1,4 +1,4 @@
-package setup
+package env
 
 import (
 	"log"
@@ -8,8 +8,10 @@ import (
 )
 
 type EnvVars struct {
-	Token string
-	URL   string
+	Token  string
+	URL    string
+	Org    string
+	Bucket string
 }
 
 type EnvGetter func(name string) string
@@ -26,9 +28,13 @@ func LoadEnv(envGetterFn EnvGetter) EnvVars {
 	}
 	token := envGetterFn("DOCKER_INFLUXDB_INIT_ADMIN_TOKEN")
 	port := envGetterFn("DOCKER_INFLUXDB_INIT_PORT")
+	org := envGetterFn("DOCKER_INFLUXDB_INIT_ORG")
+	bucket := envGetterFn("DOCKER_INFLUXDB_INIT_BUCKET")
 	url := "http://localhost:" + port
 	envVars := EnvVars{}
 	envVars.Token = token
 	envVars.URL = url
+	envVars.Org = org
+	envVars.Bucket = bucket
 	return envVars
 }

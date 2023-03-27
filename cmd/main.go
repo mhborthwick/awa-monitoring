@@ -1,8 +1,10 @@
 package main
 
 import (
-	"github.com/mhborthwick/awa-monitoring-v2/pkg/db"
-	"github.com/mhborthwick/awa-monitoring-v2/pkg/setup"
+	"fmt"
+
+	"github.com/mhborthwick/awa-monitoring-v2/pkg/setup/db"
+	"github.com/mhborthwick/awa-monitoring-v2/pkg/setup/env"
 )
 
 // TODO: Move to rest package
@@ -16,8 +18,10 @@ type ZendeskIncidents struct {
 // }
 
 func main() {
-	envVars := setup.LoadEnv(setup.GetEnv)
+	envVars := env.LoadEnv(env.GetEnv)
 	client := db.NewInfluxDBClient(envVars.URL, envVars.Token)
+	writeAPI := client.WriteAPI(envVars.Org, envVars.Bucket)
+	fmt.Println(writeAPI)
 	defer client.Close()
 }
 
