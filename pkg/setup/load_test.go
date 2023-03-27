@@ -1,4 +1,4 @@
-package env
+package setup
 
 import (
 	"testing"
@@ -18,7 +18,7 @@ func MockGetEnv(name string) string {
 }
 
 func Test_Load(t *testing.T) {
-	envVars := Load(MockGetEnv)
+	envVars := LoadEnv(MockGetEnv)
 	expected := EnvVars{
 		Token: "token",
 		URL:   "http://localhost:1234",

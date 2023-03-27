@@ -1,4 +1,4 @@
-package env
+package setup
 
 import (
 	"log"
@@ -18,7 +18,7 @@ func GetEnv(name string) string {
 	return os.Getenv(name)
 }
 
-func Load(envGetterFn EnvGetter) EnvVars {
+func LoadEnv(envGetterFn EnvGetter) EnvVars {
 	pathToEnvFile := "../../../.env"
 	err := godotenv.Load(pathToEnvFile)
 	if err != nil {
