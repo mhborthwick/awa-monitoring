@@ -1,8 +1,10 @@
 package main
 
 import (
-	"fmt"
+	"os"
+	"path/filepath"
 
+	"github.com/mhborthwick/awa-monitoring-v2/pkg/adding/klaviyo"
 	"github.com/mhborthwick/awa-monitoring-v2/pkg/setup/db"
 	"github.com/mhborthwick/awa-monitoring-v2/pkg/setup/env"
 )
@@ -13,15 +15,14 @@ type ZendeskIncidents struct {
 	Data []interface{} `json:"data"`
 }
 
-// func main() {
-// 	klaviyo.WriteDataPoint()
-// }
-
 func main() {
-	envVars := env.LoadEnv(env.GetEnv)
+	dir, _ := os.Getwd()
+	pathToEnvFile := filepath.Join(dir, ".env")
+	envVars := env.LoadEnv(env.GetEnv, pathToEnvFile)
 	client := db.NewInfluxDBClient(envVars.URL, envVars.Token)
-	writeAPI := client.WriteAPI(envVars.Org, envVars.Bucket)
-	fmt.Println(writeAPI)
+	klaviyo.AddDataPoint(client, envVars.Org, envVars.Bucket)
+	// writeAPI := client.WriteAPI(envVars.Org, envVars.Bucket)
+	// fmt.Println(writeAPI)
 	defer client.Close()
 }
 

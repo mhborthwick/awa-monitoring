@@ -20,8 +20,7 @@ func GetEnv(name string) string {
 	return os.Getenv(name)
 }
 
-func LoadEnv(envGetterFn EnvGetter) EnvVars {
-	pathToEnvFile := "../../../.env"
+func LoadEnv(envGetterFn EnvGetter, pathToEnvFile string) EnvVars {
 	err := godotenv.Load(pathToEnvFile)
 	if err != nil {
 		log.Fatal("Error loading .env file")

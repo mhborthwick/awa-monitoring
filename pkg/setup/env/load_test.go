@@ -1,6 +1,9 @@
 package env
 
 import (
+	"fmt"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -24,7 +27,10 @@ func MockGetEnv(name string) string {
 }
 
 func Test_Load(t *testing.T) {
-	envVars := LoadEnv(MockGetEnv)
+	dir, _ := os.Getwd()
+	path := filepath.Join(dir, "..", "..", "..", ".env")
+	fmt.Println(path)
+	envVars := LoadEnv(MockGetEnv, path)
 	expected := EnvVars{
 		Token:  "token",
 		URL:    "http://localhost:1234",
