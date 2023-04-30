@@ -54,6 +54,6 @@ func ScrapeData(
 		fmt.Println("Visiting", r.URL.String())
 	})
 	c.Visit(url)
-	fmt.Println(data, url) //TODO: Remove
+	// fmt.Println(data, url) //TODO: Remove
 	return data
 }
