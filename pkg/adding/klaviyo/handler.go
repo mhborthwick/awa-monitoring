@@ -5,33 +5,20 @@ import (
 	"time"
 
 	influxdb2 "github.com/influxdata/influxdb-client-go/v2"
-	"github.com/mhborthwick/awa-monitoring-v2/pkg/http/colly"
+	"github.com/mhborthwick/awa-monitoring-v2/pkg/adding"
 )
-
-type DataPoints struct {
-	Measurement string
-	Tags        map[string]string
-	Fields      map[string]interface{}
-	Time        time.Time
-}
-
-func LoadData() []colly.Item {
-	data := colly.ScrapeData(
-		"https://status.klaviyo.com/",
-		"Klaviyo",
-	)
-	return data
-}
 
 func AddDataPoint(
 	client influxdb2.Client,
 	org string,
 	bucket string,
 ) {
-	data := LoadData()
-	var dataPoints []DataPoints
+	url := "https://status.klaviyo.com/"
+	provider := "Klaviyo"
+	data := adding.LoadScrapeData(url, provider)
+	var dataPoints []adding.DataPoints
 	for _, i := range data {
-		dataPoints = append(dataPoints, DataPoints{
+		dataPoints = append(dataPoints, adding.DataPoints{
 			Measurement: "status",
 			Tags:        map[string]string{"provider": i.Provider},
 			Fields:      map[string]interface{}{i.Name: i.Status},

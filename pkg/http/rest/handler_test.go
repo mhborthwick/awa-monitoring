@@ -13,7 +13,7 @@ type MockData struct {
 func TestGetJson(t *testing.T) {
 	var actual MockData
 	body := []byte(`{"data": "Mock data response"}`)
-	err := GetJson(body, &actual)
+	err := GetJSON(body, &actual)
 	if err != nil {
 		t.Fatal(err)
 	}

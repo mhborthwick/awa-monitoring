@@ -5,13 +5,8 @@ import (
 	"time"
 
 	influxdb2 "github.com/influxdata/influxdb-client-go/v2"
-	"github.com/mhborthwick/awa-monitoring-v2/pkg/http/rest"
+	"github.com/mhborthwick/awa-monitoring-v2/pkg/adding"
 )
-
-/*
-- Load data from https://status.zendesk.com/api/ssp/services.json
-- Add data point to InfluxDB
-*/
 
 type Response struct {
 	Data []Service `json:"data"`
@@ -24,34 +19,20 @@ type Service struct {
 	} `json:"attributes"`
 }
 
-type DataPoints struct {
-	Measurement string
-	Tags        map[string]string
-	Fields      map[string]interface{}
-	Time        time.Time
-}
-
-func LoadData() []Service {
-	url := "https://status.zendesk.com/api/ssp/services.json"
-	body, _ := rest.FetchData(url)
-	var r Response
-	rest.GetJson(body, &r)
-	// fmt.Printf("%+v\n", r)
-	return r.Data
-}
-
 func AddDataPoint(
 	client influxdb2.Client,
 	org string,
 	bucket string,
 ) {
-	data := LoadData()
-	var dataPoints []DataPoints
-	for _, i := range data {
-		dataPoints = append(dataPoints, DataPoints{
+	url := "https://status.zendesk.com/api/ssp/services.json"
+	var res Response
+	adding.LoadJSONData(url, &res)
+	var dataPoints []adding.DataPoints
+	for _, d := range res.Data {
+		dataPoints = append(dataPoints, adding.DataPoints{
 			Measurement: "status",
 			Tags:        map[string]string{"provider": "Zendesk"},
-			Fields:      map[string]interface{}{i.Attributes.Name: i.Attributes.Deprecated},
+			Fields:      map[string]interface{}{d.Attributes.Name: d.Attributes.Deprecated},
 			Time:        time.Now(),
 		})
 	}

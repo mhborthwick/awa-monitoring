@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func GetJson(body []byte, p interface{}) error {
+func GetJSON(body []byte, p interface{}) error {
 	return json.Unmarshal(body, p)
 }
 
