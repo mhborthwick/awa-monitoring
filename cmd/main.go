@@ -2,8 +2,10 @@ package main
 
 /*
 TODO
-- Add tests to adding package
-- Set up grafana
+- Add tests to adding package TODO
+- Set up grafana DONE
+- Change data point to number DONE
+- Deploy TODO
 */
 
 import (

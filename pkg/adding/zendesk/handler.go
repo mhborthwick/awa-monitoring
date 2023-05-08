@@ -29,10 +29,11 @@ func AddDataPoint(
 	adding.LoadJSONData(url, &res)
 	var dataPoints []adding.DataPoints
 	for _, d := range res.Data {
+		status := adding.StatusFormatBoolToInt(d.Attributes.Deprecated, false)
 		dataPoints = append(dataPoints, adding.DataPoints{
-			Measurement: "status",
+			Measurement: d.Attributes.Name,
 			Tags:        map[string]string{"provider": "Zendesk"},
-			Fields:      map[string]interface{}{d.Attributes.Name: d.Attributes.Deprecated},
+			Fields:      map[string]interface{}{d.Attributes.Name: status},
 			Time:        time.Now(),
 		})
 	}

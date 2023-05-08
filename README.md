@@ -31,9 +31,9 @@ GRAFANA_PORT=3000
 
   - [x] Hover - scraper
 
-- [ ] Set up InfluxDB
+- [x] Set up InfluxDB
 
-- [ ] Set up Grafana
+- [x] Set up Grafana
 
 - [ ] Set up Kubernetes CronJob
 

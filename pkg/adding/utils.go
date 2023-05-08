@@ -24,3 +24,17 @@ func LoadJSONData[T any](url string, res *T) *T {
 	rest.GetJSON(body, &res)
 	return res
 }
+
+func StatusFormatStringToInt(actual, expected string) int {
+	if actual == expected {
+		return 1
+	}
+	return 0
+}
+
+func StatusFormatBoolToInt(actual, expected bool) int {
+	if actual == expected {
+		return 1
+	}
+	return 0
+}

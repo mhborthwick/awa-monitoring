@@ -1,2 +1,5 @@
 .vscode
 .env*
+
+# local scripts
+scripts/*

@@ -18,10 +18,11 @@ func AddDataPoint(
 	data := adding.LoadScrapeData(url, provider)
 	var dataPoints []adding.DataPoints
 	for _, i := range data {
+		status := adding.StatusFormatStringToInt(i.Status, "Online")
 		dataPoints = append(dataPoints, adding.DataPoints{
-			Measurement: "status",
+			Measurement: i.Name,
 			Tags:        map[string]string{"provider": i.Provider},
-			Fields:      map[string]interface{}{i.Name: i.Status},
+			Fields:      map[string]interface{}{i.Name: status},
 			Time:        time.Now(),
 		})
 	}
