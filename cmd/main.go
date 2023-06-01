@@ -20,12 +20,15 @@ import (
 )
 
 func main() {
-	dir, _ := os.Getwd()
-	pathToEnvFile := filepath.Join(dir, ".env")
-	envVars := env.LoadEnv(env.GetEnv, pathToEnvFile)
-	client := db.NewInfluxDBClient(envVars.URL, envVars.Token)
-	klaviyo.AddDataPoint(client, envVars.Org, envVars.Bucket)
-	hover.AddDataPoint(client, envVars.Org, envVars.Bucket)
-	zendesk.AddDataPoint(client, envVars.Org, envVars.Bucket)
-	defer client.Close()
+	if false {
+		dir, _ := os.Getwd()
+		pathToEnvFile := filepath.Join(dir, ".env")
+		envVars := env.LoadEnv(env.GetEnv, pathToEnvFile)
+		client := db.NewInfluxDBClient(envVars.URL, envVars.Token)
+		klaviyo.AddDataPoint(client, envVars.Org, envVars.Bucket)
+		hover.AddDataPoint(client, envVars.Org, envVars.Bucket)
+		zendesk.AddDataPoint(client, envVars.Org, envVars.Bucket)
+		defer client.Close()
+	}
+	println("Hello!")
 }
