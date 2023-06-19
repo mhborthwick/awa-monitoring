@@ -23,6 +23,9 @@ func MockGetEnv(name string) string {
 	if name == "DOCKER_INFLUXDB_INIT_BUCKET" {
 		env = "bucket"
 	}
+	if name == "DOCKER_INFLUXDB_ENDPOINT" {
+		env = "localhost"
+	}
 	return env
 }
 

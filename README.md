@@ -9,6 +9,7 @@
 - Add the following to `.env` file
 
 ```sh
+DOCKER_INFLUXDB_ENDPOINT=localhost
 DOCKER_INFLUXDB_INIT_MODE=setup
 DOCKER_INFLUXDB_INIT_USERNAME=change_me
 DOCKER_INFLUXDB_INIT_PASSWORD=change_me # min 8 characters

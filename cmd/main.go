@@ -20,15 +20,18 @@ import (
 )
 
 func main() {
-	if false {
+	isProd := env.GetEnv("IS_PROD")
+	var envVars env.EnvVars
+	if isProd == "true" {
+		envVars = env.LoadProdEnv(env.GetEnv)
+	} else {
 		dir, _ := os.Getwd()
 		pathToEnvFile := filepath.Join(dir, ".env")
-		envVars := env.LoadEnv(env.GetEnv, pathToEnvFile)
-		client := db.NewInfluxDBClient(envVars.URL, envVars.Token)
-		klaviyo.AddDataPoint(client, envVars.Org, envVars.Bucket)
-		hover.AddDataPoint(client, envVars.Org, envVars.Bucket)
-		zendesk.AddDataPoint(client, envVars.Org, envVars.Bucket)
-		defer client.Close()
+		envVars = env.LoadEnv(env.GetEnv, pathToEnvFile)
 	}
-	println("Hello!")
+	client := db.NewInfluxDBClient(envVars.URL, envVars.Token)
+	klaviyo.AddDataPoint(client, envVars.Org, envVars.Bucket)
+	hover.AddDataPoint(client, envVars.Org, envVars.Bucket)
+	zendesk.AddDataPoint(client, envVars.Org, envVars.Bucket)
+	defer client.Close()
 }
