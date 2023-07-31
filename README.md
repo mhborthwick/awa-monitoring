@@ -1,6 +1,18 @@
 # AWA Monitoring
 
-> 🚨 This project is currently in development
+> A platform monitoring service for the As We Are online store
+
+## [Request a demo](mailto:mhborthwick%20*at*%20gmail%20-dot-%20com)
+
+## Overview
+
+This service provides monitoring of platforms that the As We Are online store (coming soon!) depends on, helping us to detect any outages and issues in real-time.
+
+## Requirements
+
+- go 1.20
+  
+- Docker
 
 ## Setup
 
@@ -22,7 +34,19 @@ DOCKER_INFLUXDB_INIT_HOST=influxdb
 GRAFANA_PORT=3000
 ```
 
-## Checklist
+- Run Docker containers
+
+```sh
+$ make up
+```
+
+## Start
+
+```sh
+$ make run 
+```
+
+## Todo
 
 - [x] Add handlers
 
@@ -36,6 +60,8 @@ GRAFANA_PORT=3000
 
 - [x] Set up Grafana
 
-- [ ] Set up Kubernetes CronJob
+- [x] Deploy to AWS
 
-- [ ] Deploy
+- [ ] Configure Terraform for deploys
+
+- [ ] Set up alerts
