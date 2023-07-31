@@ -64,6 +64,8 @@ $ make run
 
 - [x] Deploy to AWS
 
+- [x] Set up scheduled task
+
 - [ ] Configure Terraform for deploys
 
 - [ ] Set up alerts
