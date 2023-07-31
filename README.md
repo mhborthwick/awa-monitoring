@@ -2,6 +2,8 @@
 
 > A platform monitoring service for the As We Are online store
 
+<img src="demo.png" alt="Demo Image" width="500" height="400">
+
 ## [Request a demo](mailto:mhborthwick%20*at*%20gmail%20-dot-%20com)
 
 ## Overview
@@ -11,7 +13,7 @@ This service provides monitoring of platforms that the As We Are online store (c
 ## Requirements
 
 - go 1.20
-  
+
 - Docker
 
 ## Setup
@@ -43,7 +45,7 @@ $ make up
 ## Start
 
 ```sh
-$ make run 
+$ make run
 ```
 
 ## Todo
