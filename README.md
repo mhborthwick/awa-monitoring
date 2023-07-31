@@ -50,13 +50,13 @@ $ make run
 
 ## Todo
 
-- [x] Add handlers
+- [x] Add status fetch handlers
 
-  - [x] Zendesk - http
+  - [x] Zendesk - Customer Support
 
-  - [x] Klaviyo - scraper
+  - [x] Klaviyo - Email Marketing
 
-  - [x] Hover - scraper
+  - [x] Hover - Domain Hosting
 
 - [x] Set up InfluxDB
 
