@@ -50,7 +50,7 @@ $ make run
 
 ## Supported Platforms
 
-Monitoring is supported the following platforms:
+Monitoring is supported for the following platforms:
 
 - [Zendesk - Customer Support](https://status.zendesk.com/)
 
