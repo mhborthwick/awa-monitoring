@@ -8,7 +8,7 @@
 
 ## Overview
 
-This service provides monitoring of platforms that the As We Are online store (coming soon!) depends on, helping us to detect any outages and issues in real-time.
+This service provides monitoring of platforms that the As We Are online store (coming soon!) depends on, helping to detect any outages and issues in real-time.
 
 ## Requirements
 
@@ -48,24 +48,12 @@ $ make up
 $ make run
 ```
 
-## Todo
+## Supported Platforms
 
-- [x] Add status fetch handlers
+Monitoring is supported the following platforms:
 
-  - [x] Zendesk - Customer Support
+- [Zendesk - Customer Support](https://status.zendesk.com/)
 
-  - [x] Klaviyo - Email Marketing
+- [Klaviyo - Email Marketing](https://status.klaviyo.com/)
 
-  - [x] Hover - Domain Hosting
-
-- [x] Set up InfluxDB
-
-- [x] Set up Grafana
-
-- [x] Deploy to AWS
-
-- [x] Set up scheduled task
-
-- [ ] Configure Terraform for deploys
-
-- [ ] Set up alerts
+- [Hover - Domain Hosting](https://hoverstatus.com/)
