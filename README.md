@@ -1,6 +1,6 @@
 # AWA Monitoring
 
-> A platform monitoring service for the As We Are online store
+> A platform monitoring service for the As We Are online store.
 
 <img src="demo.png" alt="Demo Image" width="500" height="400">
 
